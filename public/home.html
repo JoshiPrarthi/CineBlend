@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineBlend</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom CSS for carousel */
+    .carousel {
+      margin: 0 auto;
+      background-color: black;
+      box-shadow: 10px 15px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .carousel-item img {
+      height: 600px;
+      opacity: 0.5;
+      object-fit: cover;
+    }
+
+    /* Custom CSS for navbar */
+    .logo {
+    height: 60px;
+    margin-left: 10%;
+    border-radius: 50%;
+}
+    .navbar {
+      height: 4.5rem;
+      background-color:  #e5e5e5;
+      box-shadow: 5px 10px 15px rgba(0,0,0,0.3);
+    }
+
+    .navbar-brand {
+      margin-right: 0%;
+    }
+
+    .navbar-nav {
+      font-family:"Roboto";
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-nav .nav-link {
+      line-height: 1;
+    }
+
+    .active {
+      font-weight: 500 !important;
+      color:rgb(0, 0, 0) !important;
+    }
+
+    .navbar-nav a {
+      color:#474747;
+      padding-bottom: 15px;
+      margin-right: 5%; 
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: "roboto";
+      transition: all 0.2s ease-in-out;
+    }
+
+    .navbar-nav a:hover {
+      color:rgb(0, 0, 0);
+      font-weight: 500;
+    }
+
+    .username {
+      display: flex;
+      align-items: center;
+      margin-right: 0px;
+      padding-bottom: 5px;
+      color: rgb(0, 0, 0);
+      font-size: 16px;
+      font-weight: 500;
+      margin-left:400px ;
+    }
+
+    .username span {
+      margin-right: 10px;
+    }
+
+    .wish-list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: 35px;
+      padding-right: 0px;
+    }
+
+    .u-icon {
+      color:rgb(0, 0, 0);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+      padding: 5px;
+    }
+
+    .wish-list i {
+      border: 2px solid rgb(0, 0, 0);
+      color:rgb(0, 0, 0);
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+      width: 40px;
+      height: 40px;
+      font-size: 17px;
+      margin-top: 10px;
+      padding: 5px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .rl-active {
+      border-color: #e5e5e5!important;
+      background-color:rgb(255, 82, 82)!important;
+      color: #e5e5e5!important;
+    }
+
+    .wish-list i:hover {
+      border-color: #e5e5e5;
+      background-color:rgb(255, 82, 82);
+      color: #e5e5e5;
+    }
+
+    .trending {
+    padding: 50px;
+    background-color: rgb(34, 34, 34);
+}
+
+.trending h1 {
+    font-family: roboto;
+    font-weight: 600;
+    font-size: 50px;
+    margin-bottom: 75px;
+    color:rgb(255, 255, 255);
+    border-bottom: 4px solid;
+    border-image: linear-gradient(to left, #ff9292, #723d3d) 1;
+    width:fit-content;
+}
+
+.card {
+    color: white;
+    display: inline-block;
+    width: 400px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    font-family: roboto;
+    background-color: rgb(48, 48, 48);
+    min-height: 300px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+} 
+
+
+.card:hover {
+    transform: scale(1.025);
+}
+
+.card-img-top{
+    margin-top: 25px;
+    height:400px;
+    object-fit:contain;
+
+}
+
+.card-title {
+    text-transform: uppercase;
+    font-size: 25px;
+    color: white;
+}
+
+.author {
+    font-size: 17px;
+    color: rgb(179, 177, 177);
+    padding-bottom: 20px;
+}
+
+.card-text {
+    font-size: 17px;
+    font-weight: 300;
+}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav id="navbarID" class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img class="logo" src="3.png" alt="" srcset="">
+        <span class="name">CineBlend</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+          aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarID">
+        <div class="navbar-nav">
+          <a class="nav-link" aria-current="page" id="homelink" href="home.html">Home</a>
+          <a class="nav-link" aria-current="page" id="genrelink" href="genre.html">Genre Galore</a>
+          <a class="nav-link" aria-current="page" id="filmlink" href="film.html">Film Insight</a>
+          <a class="nav-link" aria-current="page" id="aboutuslink" href="aboutus.html">About Us</a>
+          <div class="username">
+            <i class="bi-person-circle u-icon" aria-hidden="true"></i>
+            <span id="nameDisplay"></span>
+          </div>
+          <div class="wish-list">
+            <a  id="watchlistlink" href="watchlist.html">
+            <i class="bi-heart-fill" aria-hidden="true"></i>
+          </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carousel -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="slide1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Welcome to CineBlend</h5>
+          <p>Your Personalized Movie Blend Awaits!</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="slide2.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Explore the Trending Section</h5>
+          <p>Pick Your Next Movie Adventure</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="slide3.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Dive into Our Vast Library</h5>
+          <p>Endless Choices, Countless Adventures</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="trending">
+    <h1>Trending Choices</h1>
+    <div class="row text-center row-cols-1 row-cols-md-2 row-cols-lg-3" id="trendingContainer">
+    </div>
+</div>
+
+  <!-- Bootstrap JavaScript Bundle (bootstrap.bundle.min.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Define a function to fetch trending movies
+function fetchTrendingmovies() {
+    return [
+        {
+            title: "Kung Fu Panda 4",
+            director: "Mike Mitchell",
+            coverImg: "m1.jpg",
+        },
+        {
+            title: "The Fall Guy",
+            director: "David Leitch",
+            coverImg: "m2.jpg",
+        },
+        {
+            title: "Dune: Part Two",
+            director: "Denis Villeneuve",
+            coverImg: "m3.jpg",
+        },
+        {
+            title: "Queen of Tears",
+            director: "Jang Young-woo; Kim Hee-won",
+            coverImg: "m4.jpg",
+        },
+        {
+            title: "Vincenzo",
+            director: "Kim Hee-won",
+            coverImg: "m5.jpg",
+        },
+        {
+            title: "It's okay to be not okay",
+            director: "Park Shin Woo",
+            coverImg: "m6.jpg",
+        }
+    ];
+}
+
+// Function to render trending movies
+function renderTrendingmovies() {
+    const trendingmovies = fetchTrendingmovies();
+    const container = document.getElementById('trendingContainer');
+
+    // Clear existing content
+    container.innerHTML = '';
+
+    // Iterate over trending movies and create HTML elements
+    trendingmovies.forEach(movie => {
+        const card = document.createElement('div');
+        card.className = 'col mb-4';
+        card.innerHTML = `
+            <div class="card">
+                <img src="${movie.coverImg}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${movie.title}</h5>
+                    <h6 class="card-subtitle mb-2 author">${movie.director}</h6>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Call the render function when the page loads
+
+  window.onload = function() {
+    renderTrendingmovies();
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const name = urlParams.get('name');
+    if (name) {
+        document.getElementById('nameDisplay').textContent = `${name}`;
+    }
+};
+
+function redirectToPage(pageURL) {
+    const name = document.getElementById('nameDisplay').textContent;
+    if (name) {
+        window.location.href = `${pageURL}?name=${encodeURIComponent(name)}`;
+    } else {
+        window.location.href = pageURL;
+    }
+}
+
+document.getElementById('homelink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('home.html');
+});
+
+document.getElementById('genrelink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('genre.html');
+});
+
+document.getElementById('filmlink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('film.html');
+});
+
+document.getElementById('aboutuslink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('aboutus.html');
+});
+
+document.getElementById('watchlistlink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('watchlist.html');
+});
+window.watsonAssistantChatOptions = {
+    integrationID: "fc469158-59c8-4d6e-8081-c2cdcb43ba7c", // The ID of this integration.
+    region: "eu-gb", // The region your integration is hosted in.
+    serviceInstanceID: "7f37f19e-d5b1-4e93-b1a7-847612d3d52c", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+  </script>
+</body>
+</html>

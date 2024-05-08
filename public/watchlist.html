@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Watchlist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+    .logo {
+    height: 60px;
+    margin-left: 10%;
+    border-radius: 50%;
+}
+    .navbar {
+      height: 4.5rem;
+      background-color:  #e5e5e5;
+      box-shadow: 5px 10px 15px rgba(0,0,0,0.3);
+    }
+
+    .navbar-brand {
+      margin-right: 0%;
+    }
+
+    .navbar-nav {
+      font-family:"Roboto";
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-nav .nav-link {
+      line-height: 1;
+    }
+
+    .active {
+      font-weight: 500 !important;
+      color:rgb(0, 0, 0) !important;
+    }
+
+    .navbar-nav a {
+      color:#474747;
+      padding-bottom: 15px;
+      margin-right: 5%; 
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: "roboto";
+      transition: all 0.2s ease-in-out;
+    }
+
+    .navbar-nav a:hover {
+      color:rgb(0, 0, 0);
+      font-weight: 500;
+    }
+
+    .username {
+      display: flex;
+      align-items: center;
+      margin-right: 0px;
+      padding-bottom: 5px;
+      color: rgb(0, 0, 0);
+      font-size: 16px;
+      font-weight: 500;
+      margin-left:400px ;
+    }
+
+    .username span {
+      margin-right: 10px;
+    }
+
+    .wish-list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: 35px;
+      padding-right: 0px;
+    }
+
+    .u-icon {
+      color:rgb(0, 0, 0);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+      padding: 5px;
+    }
+
+    .wish-list i {
+      border: 2px solid rgb(0, 0, 0);
+      color:rgb(0, 0, 0);
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+      width: 40px;
+      height: 40px;
+      font-size: 17px;
+      margin-top: 10px;
+      padding: 5px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .rl-active {
+      border-color: #e5e5e5!important;
+      background-color:rgb(255, 82, 82)!important;
+      color: #e5e5e5!important;
+    }
+
+    .wish-list i:hover {
+      border-color: #e5e5e5;
+      background-color:rgb(255, 82, 82);
+      color: #e5e5e5;
+    }
+    
+    .main {
+            background-color: #ececec;
+            min-height: 100vh;
+            color: black;
+            font-family: "Roboto", sans-serif;
+            padding: 30px;
+        }
+
+        .rl-title {
+            font-size: 40px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .card {
+          background-color: rgb(61, 61, 61);
+            box-shadow: 5px 5px 10px rgba(54, 54, 54, 0.7);
+            color: white;
+            border-radius: 20px;
+            margin: 10px;
+            height: 200px;
+            width: 90%;
+        }
+
+        .card-title {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .card img {
+            max-height: 200px;
+            object-fit: contain;
+        }
+
+        .card-subtitle {
+            font-size: 18px;
+            color: rgb(148, 148, 148);
+        }
+
+        .card-text {
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .btn:hover {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbarID" class="navbar navbar-expand-sm navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img class="logo" src="3.png" alt="" srcset="">
+            <span class="name">CineBlend</span>
+          </a>
+    
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+              aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarID">
+            <div class="navbar-nav">
+              <a class="nav-link" aria-current="page" id="homelink" href="home.html">Home</a>
+              <a class="nav-link" aria-current="page" id="genrelink" href="genre.html">Genre Galore</a>
+              <a class="nav-link" aria-current="page" id="filmlink" href="film.html">Film Insight</a>
+              <a class="nav-link" aria-current="page" id="aboutuslink" href="aboutus.html">About Us</a>
+              <div class="username">
+                <i class="bi-person-circle u-icon" aria-hidden="true"></i>
+                <span id="nameDisplay"></span>
+              </div>
+              <div class="wish-list">
+                <a  id="watchlistlink" href="watchlist.html">
+                <i class="bi-heart-fill" aria-hidden="true"></i>
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+    <div class="main">
+        <h1 class="rl-title">Your Watchlist</h1>
+        <div class="container" id="watchlistContainer">
+      </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      window.onload = function() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const name = urlParams.get('name');
+    if (name) {
+        document.getElementById('nameDisplay').textContent = `${name}`;
+        fetchWatchlist(name);
+    }
+};
+
+function fetchWatchlist(name) {
+    // Fetch watchlist data for the specific user from the server
+    fetch(`/wishlist?name=${encodeURIComponent(name)}`)
+        .then(response => response.json())
+        .then(wishlistlist => {
+            const watchlistContainer = document.getElementById('watchlistContainer');
+            wishlistlist.forEach(movie => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="${movie.image}" class="card-img-top" alt="Movie Image">
+                        </div>
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">${movie.title}</h5>
+                                <p class="card-subtitle mb-2">
+                                    <strong>Genre: ${movie.genre}</strong><br>
+                                </p>
+                                <button class="btn" data-movie-id="${movie._id}" data-rev="${movie._rev}">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                watchlistContainer.appendChild(card);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching watchlist:', error);
+            alert('Error fetching watchlist');
+        });
+}
+
+      function redirectToPage(pageURL) {
+    const name = document.getElementById('nameDisplay').textContent;
+    if (name) {
+        window.location.href = `${pageURL}?name=${encodeURIComponent(name)}`;
+    } else {
+        window.location.href = pageURL;
+    }
+}
+
+document.getElementById('homelink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('home.html');
+});
+
+document.getElementById('genrelink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('genre.html');
+});
+
+document.getElementById('filmlink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('film.html');
+});
+
+document.getElementById('aboutuslink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('aboutus.html');
+});
+
+document.getElementById('watchlistlink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('watchlist.html');
+});
+
+function handleDeleteClick(event) {
+            const movieId = event.target.dataset.movieId;
+            const rev = event.target.dataset.rev;
+
+            if (movieId && rev) {
+                // Send a DELETE request to the server to delete the movie from the watchlist
+                fetch(`/wishlist/${movieId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ rev: rev })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // If the deletion is successful, remove the card from the UI
+                        event.target.closest('.card').remove();
+                        alert('Movie deleted successfully');
+                    } else {
+                        throw new Error('Failed to delete movie');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting movie:', error);
+                    alert('Error deleting movie');
+                });
+            }
+        }
+
+        // Add event listener to handle delete button clicks
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('btn')) {
+                handleDeleteClick(event);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

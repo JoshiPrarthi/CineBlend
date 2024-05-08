@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Genre Search</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    .logo {
+    height: 60px;
+    margin-left: 10%;
+    border-radius: 50%;
+}
+    .navbar {
+      height: 4.5rem;
+      background-color:  #e5e5e5;
+      box-shadow: 5px 10px 15px rgba(0,0,0,0.3);
+    }
+
+    .navbar-brand {
+      margin-right: 0%;
+    }
+
+    .navbar-nav {
+      font-family:"Roboto";
+      flex: 1;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-nav .nav-link {
+      line-height: 1;
+    }
+
+    .active {
+      font-weight: 500 !important;
+      color:rgb(0, 0, 0) !important;
+    }
+
+    .navbar-nav a {
+      color:#474747;
+      padding-bottom: 15px;
+      margin-right: 5%; 
+      font-size: 1.1rem;
+      font-weight: 400;
+      font-family: "roboto";
+      transition: all 0.2s ease-in-out;
+    }
+
+    .navbar-nav a:hover {
+      color:rgb(0, 0, 0);
+      font-weight: 500;
+    }
+
+    .username {
+      display: flex;
+      align-items: center;
+      margin-right: 0px;
+      padding-bottom: 5px;
+      color: rgb(0, 0, 0);
+      font-size: 16px;
+      font-weight: 500;
+      margin-left:400px ;
+    }
+
+    .username span {
+      margin-right: 10px;
+    }
+
+    .wish-list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: 35px;
+      padding-right: 0px;
+    }
+
+    .u-icon {
+      color:rgb(0, 0, 0);
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+      width: 40px;
+      height: 40px;
+      font-size: 25px;
+      padding: 5px;
+    }
+
+    .wish-list i {
+      border: 2px solid rgb(0, 0, 0);
+      color:rgb(0, 0, 0);
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 3px;
+      width: 40px;
+      height: 40px;
+      font-size: 17px;
+      margin-top: 10px;
+      padding: 5px;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .rl-active {
+      border-color: #e5e5e5!important;
+      background-color:rgb(255, 82, 82)!important;
+      color: #e5e5e5!important;
+    }
+
+    .wish-list i:hover {
+      border-color: #e5e5e5;
+      background-color:rgb(255, 82, 82);
+      color: #e5e5e5;
+    }
+ 
+    /* CSS styles */
+    body {
+      font-family: Roboto,Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .form-select {
+      padding: 5px 10px;
+      font-size: 16px;
+      border-radius: 5px;
+    }
+
+    .container {
+      margin-top: 20px;
+    }
+
+    .card {
+      display: flex;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background-color:rgb(61, 61, 61) ;
+      color:white;
+      box-shadow: 5px 5px 10px rgba(54, 54, 54, 0.7);
+      overflow: hidden;
+    }
+
+    .card-img-top {
+      padding-top: 20px;
+      padding-left: 20px;
+      width: 150px;
+      height: 225px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-title {
+      color: rgb(255, 255, 255);
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .card-subtitle {
+      font-weight: 200;
+      font-size: 16px;
+      color:rgb(163, 163, 163);
+    }
+
+    .btn {
+      outline:none;
+      width:20%;
+      text-align: center;
+      background-color:transparent;
+      border: 2px solid #eeeeee;
+      color: #eeeeee;
+      padding: 7px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.15s ease-in-out;
+    }
+    .btn:hover {
+      outline:none;
+      background-color:#eeeeee;
+     color:black;
+    }
+    .more-btn{
+    width:40%;
+    text-align: center;
+    background-color:transparent;
+    border: 2px solid black;
+    color: black;
+    padding: 7px 20px;
+    margin-left: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.15s ease-in-out;
+    
+  }
+  .more-btn:hover{
+    background-color: rgb(41, 41, 41);
+    color:#dfdfdf;
+  }
+  .more {
+    display: flex;
+    justify-content: center;
+  }
+  </style>
+</head>
+<body>
+  <nav id="navbarID" class="navbar navbar-expand-sm navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img class="logo" src="3.png" alt="" srcset="">
+        <span class="name">CineBlend</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+          aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarID">
+        <div class="navbar-nav">
+          <a class="nav-link" aria-current="page" id="homelink" href="home.html">Home</a>
+          <a class="nav-link" aria-current="page" id="genrelink" href="genre.html">Genre Galore</a>
+          <a class="nav-link" aria-current="page" id="filmlink" href="film.html">Film Insight</a>
+          <a class="nav-link" aria-current="page" id="aboutuslink" href="aboutus.html">About Us</a>
+          <div class="username">
+            <i class="bi-person-circle u-icon" aria-hidden="true"></i>
+            <span id="nameDisplay"></span>
+          </div>
+          <div class="wish-list">
+            <a  id="watchlistlink" href="watchlist.html">
+            <i class="bi-heart-fill" aria-hidden="true"></i>
+          </a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="main">
+    <div class="explore-header">
+      <div class="genre-dropdown">
+        <label for="genre-select" class="title">Select a Genre:</label>
+        <select class="form-select" id="genre-select">
+          <option value="">-- Select Genre --</option>
+          <option value="28">Action</option>
+          <option value="12">Adventure</option>
+          <option value="16">Animation</option>
+          <option value="35">Comedy</option>
+          <option value="80">Crime</option>
+          <option value="99">Documentary</option>
+          <option value="18">Drama</option>
+          <option value="10751">Family</option>
+          <option value="14">Fantasy</option>
+          <option value="36">History</option>
+          <option value="27">Horror</option>
+          <option value="10402">Music</option>
+          <option value="9648">Mystery</option>
+          <option value="10749">Romance</option>
+          <option value="878">Science Fiction</option>
+          <option value="10770">TV Movie</option>
+          <option value="53">Thriller</option>
+          <option value="10752">War</option>
+          <option value="37">Western</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="movieListContainer" class="container"></div>
+
+    <div class="more">
+      <button id="loadMoreBtn" class="more-btn">More</button>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code
+    const apiUrl = 'https://api.themoviedb.org/3';
+    const apiKey = 'ebf6b563a2f76a0c355d5c4bedacd078';
+    let currentPage = 1;
+    let selectedGenre = null;
+    const genreMap = {
+      28: 'Action',
+      12: 'Adventure',
+      16: 'Animation',
+      35: 'Comedy',
+      80: 'Crime',
+      99: 'Documentary',
+      18: 'Drama',
+      10751: 'Family',
+      14: 'Fantasy',
+      36: 'History',
+      27: 'Horror',
+      10402: 'Music',
+      9648: 'Mystery',
+      10749: 'Romance',
+      878: 'Science Fiction',
+      10770: 'TV Movie',
+      53: 'Thriller',
+      10752: 'War',
+      37: 'Western'
+    };
+
+    function getGenreNames(genreIds) {
+      return genreIds.map(id => genreMap[id]);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      populateGenreDropdown();
+    });
+
+    function populateGenreDropdown() {
+      const genreDropdown = document.getElementById("genre-select");
+      const genres = [
+        { id: 28, name: 'Action' },
+        { id: 12, name: 'Adventure' },
+        { id: 16, name: 'Animation' },
+        { id: 35, name: 'Comedy' },
+        { id: 80, name: 'Crime' },
+        { id: 99, name: 'Documentary' },
+        { id: 18, name: 'Drama' },
+        { id: 10751, name: 'Family' },
+        { id: 14, name: 'Fantasy' },
+        { id: 36, name: 'History' },
+        { id: 27, name: 'Horror' },
+        { id: 10402, name: 'Music' },
+        { id: 9648, name: 'Mystery' },
+        { id: 10749, name: 'Romance' },
+        { id: 878, name: 'Science Fiction' },
+        { id: 10770, name: 'TV Movie' },
+        { id: 53, name: 'Thriller' },
+        { id: 10752, name: 'War' },
+        { id: 37, name: 'Western' }
+      ];
+
+      genres.forEach(genre => {
+        genreDropdown.innerHTML += `<option value="${genre.id}">${genre.name}</option>`;
+      });
+    }
+
+    function loadMovies() {
+      selectedGenre = document.getElementById("genre-select").value;
+      if (!selectedGenre) {
+        alert("Please select a genre.");
+        return;
+      }
+
+      const movieListContainer = document.getElementById("movieListContainer");
+      movieListContainer.innerHTML = '';
+
+      fetch(`${apiUrl}/discover/movie?with_genres=${selectedGenre}&api_key=${apiKey}&page=${currentPage}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.results.length === 0) {
+            alert("No movies found for the selected genre.");
+            return;
+          }
+          data.results.forEach(movie => {
+            const movieCard = document.createElement('div');
+            movieCard.classList.add('card');
+            movieCard.innerHTML = `
+              <div class="row">
+                <div class="col-md-3">
+                  <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="Movie Image">
+                </div>
+                <div class="col-md-9">
+                  <div class="card-body">
+                    <h5 class="card-title">Title: ${movie.title}</h5>
+                    <p class="card-subtitle mb-2">
+                      <strong>Genre: ${getGenreNames(movie.genre_ids).join(', ')}</strong><br>
+                      <strong>Rating: ${movie.vote_average}</strong><br>
+                      <strong>Plot: ${movie.overview}</strong><br>
+                    </p>
+                    <button class="btn" onclick="addToWishlist('${movie.title}', '${getGenreNames(movie.genre_ids).join(', ')}', '${movie.poster_path}')">Add</button>
+                  </div>
+                </div>
+              </div>
+            `;
+            movieListContainer.appendChild(movieCard);
+          });
+        })
+        .catch(error => {
+          console.error('Error:', error.message);
+          alert("Error: " + error.message);
+        });
+    }
+
+    document.getElementById("loadMoreBtn").addEventListener("click", function () {
+      currentPage++;
+      loadMovies();
+    });
+
+    document.getElementById("genre-select").addEventListener("change", function () {
+      currentPage = 1;
+      loadMovies();
+    });
+
+    window.onload = function() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const name = urlParams.get('name');
+    if (name) {
+        document.getElementById('nameDisplay').textContent = `${name}`;
+    }
+};
+
+function redirectToPage(pageURL) {
+    const name = document.getElementById('nameDisplay').textContent;
+    if (name) {
+        window.location.href = `${pageURL}?name=${encodeURIComponent(name)}`;
+    } else {
+        window.location.href = pageURL;
+    }
+}
+
+document.getElementById('homelink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('home.html');
+});
+
+document.getElementById('genrelink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('genre.html');
+});
+
+document.getElementById('filmlink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('film.html');
+});
+
+document.getElementById('aboutuslink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('aboutus.html');
+});
+
+document.getElementById('watchlistlink').addEventListener('click', function(event) {
+    event.preventDefault();
+    redirectToPage('watchlist.html');
+});
+
+function addToWishlist(title, genre, posterPath) {
+      const name = document.getElementById('nameDisplay').textContent;
+
+      if (!name) {
+          alert("Please provide a name.");
+          return;
+      }
+
+      const movieData = {
+          title: title,
+          genre: genre,
+          image: `https://image.tmdb.org/t/p/w500${posterPath}`,
+          userName: name
+      };
+
+      // Send a POST request to your Cloudant database API endpoint to add the movie to the wishlist
+      fetch('/wishlist', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(movieData)
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Failed to add movie to watchlist.');
+          }
+          alert('Movie added to watchlist successfully!');
+      })
+      .catch(error => {
+          console.error('Error:', error.message);
+          alert('Error adding movie to watchlist: ' + error.message);
+      });
+  }
+
+  </script>
+</body>
+</html>
